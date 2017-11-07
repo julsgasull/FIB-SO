@@ -18,13 +18,18 @@ Sessió 1:
 	rmdir: elimina directorio vacío
 
 	mv: canvia nom del fitxer o el mou a un altre directori
-		-i: Cause mv to write a prompt to standard error before moving a file that would overwrite an existing file.  If the response from the standard input begins with the character 'y' or 'Y', the move is attempted. (The -i option over-rides any previous -f or -n options.)
+		-i: Cause mv to write a prompt to standard error before moving a file that would overwrite an existing file.  
+		    If the response from the standard input begins with the character 'y' or 'Y', the move is attempted. 
+		    (The -i option over-rides any previous -f or -n options.)
 
 	cp: copia fitxers i directoris
-		-i: Cause cp to write a prompt to the standard error output before copying a file that would overwrite an existing file.  If the response from the standard input begins with the character 'y' or 'Y', the file copy is attempted. (The -i option overrides any previous -n option.)
+		-i: Cause cp to write a prompt to the standard error output before copying a file that would overwrite an 
+		    existing file.  If the response from the standard input begins with the character 'y' or 'Y', the file 
+		    copy is attempted. (The -i option overrides any previous -n option.)
 	
 	rm: borra fitxers o directoris
-		-i: Request confirmation before attempting to remove each file, regardless of the file's permissions, or whether or not the standard input device is aterminal. The -i option overrides any previous -f options.
+		-i: Request confirmation before attempting to remove each file, regardless of the file's permissions, or 
+		    whether or not the standard input device is aterminal. The -i option overrides any previous -f options.
 
 	echo: visualitza un text (pot ser una variable d'entorn)
 
@@ -263,7 +268,8 @@ Sessió 3: processos
 		      ...
 -------------------------------------------------------------------------------------------------------------------------------
 
-SESSIÓ 4: Signals
+
+Sessió 4: Signals
 
 The child does not inherit timers from its parent
 	Acciones que pueden realizar los signals:
@@ -291,8 +297,15 @@ The child does not inherit timers from its parent
 			       int sa_flags;
 			       void (*sa_restorer)(void);
            		};
+			SA_RESETHAND
+			  Restore the signal action to the default upon entry to
+			  the signal handler.  This flag is meaningful only when
+			  establishing a signal handler.
+
 
 	kill:		Envía un evento a un proceso (kill - send a signal to a process)
+			kill -9 <pid>
+
 	(comando)		<pid> [...]: Send signal to every <pid> listed.
 				-<signal>
 			The  default  signal  for  kill is TERM.
@@ -380,6 +393,7 @@ e action is to invoke a signal handler or to terminate a process.
                              ps will instead print the executable name in brackets.  (alias cmd, command).
 			time: cumulative CPU time, "[DD-]HH:MM:SS" format.  (alias cputime).
 
+	
 	waitpid:	espera finalització d'un procés
 			#include <sys/types.h>, #include <sys/wait.h>
 			pid_t wait(int *status); pid_t waitpid(pid_t pid, int *status, int options);
@@ -408,10 +422,9 @@ e action is to invoke a signal handler or to terminate a process.
 					(WNOHANG: return immediately if no child has exited)
 					error -> -1
        			Each of these calls sets errno to an appropriate value in the case of an error.
-			
-			
 
 
-				
-			
-			
+	SIGNALS: (<signal.h>) 
+		sigalrm (alarma, temporizador)
+		sigchld (fi de un procés fill)
+		sigusr1 / sigusr2 (sense significat previ)
