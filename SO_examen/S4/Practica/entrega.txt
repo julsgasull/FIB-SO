@@ -1,0 +1,53 @@
+PREGUNTA 28:
+El padre termina el proceso porque la acción por defecto del SIGALRM es terminar.
+
+PREGUNTA 29:
+Cuando hacemos un execlp se estable la tabla de tratamiento de signals por defecto.
+
+PREGUNTA 30:
+Es concurrente ya que se crean todos los hijos y luego, se hacen todos los waitpid a la vez.
+
+PREGUNTA 31:
+No, no puede, porque un proceso sólo puede enviar signals a procesos creados por el mismo usuario y grupo.
+bash: kill: (7453) - Operation not permitted
+
+
+COMPORTAMIENTO POR DEFECTO
+
+PREGUNTA 32. ¿Qué mensaje muestra el Shell cuando se envía por segunda vez el mismo
+    signal?
+
+        Muestra este mensaje: "Señal definida por el usuario 1/2"
+
+
+RIESGOS DE LA CONCURRENCIA
+
+    Ejecuta el programa signal_perdido pasándole como parámetro 1. Anota en el fichero
+    entrega.txt qué resultado observas. A continuación ejecuta de nuevo el programa pasándole
+    como parámetro 0. Anota de nuevo en entrega.txt el resultado que observas.
+
+        # Parámetro 1:
+            Hijo entrando al pause
+            Padre: voy a mandar SIGUSR1
+            Padre manda signal SIGUSR1
+            Hijo: SIGUSR1 recibido
+            Hijo sale del pause
+            Padre sale del waitpid
+
+
+        # Parámetro 0:
+            Padre manda signal SIGUSR1
+            Hijo: SIGUSR1 recibido
+            Hijo entrando al pause
+
+
+PREGUNTA 33. Explica a qué se debe el resultado de las ejecuciones de signal_perdido con parámetro 1 y con parámetro 0.
+
+        # Parámetro 1: como delay==1, el hijo espera 5 segundos hasta que recibe
+        el SIGUSR1 y el padre se espera a que el hijo haya terminado con el la
+        llamada waitpid
+
+        # Parámetro 0: como delay==0, no hay ninguna alarm que llame a SIGALRM y
+        el proceso hijo nunca termina a no ser que el usuario haga Ctrl+C. Por lo
+        tanto, el hijo se ejecuta y se queda a la espera sin terminar.
+
