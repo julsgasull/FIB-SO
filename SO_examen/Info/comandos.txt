@@ -1,0 +1,75 @@
+COMANDOS
+
+Sessió 1:
+ 
+	man: accedeix a manuals on-line 
+	
+	ls: mostra contingut del directori
+		-l: List in long format.
+		-a: Include directory entries whose names begin with a dot (.). -> mostra arxius ocults
+
+	alias: define un nombre alternativo a un comando.
+		#alias ls='ls -la' (-l i -a junts) 
+
+	mkdir: crea directorio 
+
+	rmdir: elimina directorio vacío
+
+	mv: canvia nom del fitxer o el mou a un altre directori
+		-i: Cause mv to write a prompt to standard error before moving a file that would overwrite an existing file.  If the response from the standard input begins with the character 'y' or 'Y', the move is attempted. (The -i option over-rides any previous -f or -n options.)
+
+	cp: copia fitxers i directoris
+		-i: Cause cp to write a prompt to the standard error output before copying a file that would overwrite an existing file.  If the response from the standard input begins with the character 'y' or 'Y', the file copy is attempted. (The -i option overrides any previous -n option.)
+	
+	rm: borra fitxers o directoris
+		-i: Request confirmation before attempting to remove each file, regardless of the file's permissions, or whether or not the standard input device is aterminal. The -i option overrides any previous -f options.
+
+	echo: visualitza un text (pot ser una variable d'entorn)
+
+	less: mostra fitxer en un temany apte per terminal
+
+	cat: concatena ficheros y los muestra en su salida estándar
+
+	grep: busca text (o patrons de text) en fitxers
+		#grep hola test test1 test2 test3 test4
+
+	gedit: editor (sublime mola més)
+
+	env: ejecuta un comando en un entorno modificado, si no se le pasa comando, muestra el entorno
+	
+	chmod: modifica els permisos d'accés a un fitxer
+
+	which: localitza un comando
+
+	help: ofrece información sobre comandos internos de la Shell
+		usar con: help, export, cd, alias
+		export NOMBRE_VARIABLE=valor (sin espacios).
+
+
+	en man bash: 
+	(nota: el carácter “/” sirve para buscar patrones en las páginas del man. Utilízalo para encontrar directamente la descripción de estas variables)
+		HOME: (echo &HOME) The home directory of the current user; the default argument for the cd builtin command. The value of this variable is also used when performing tilde expansion.
+		PATH: (echo &PATH) The search path for commands. It is a colon-separated list of directories in which the shell looks for commands. A zero-length (null) directory name in the value of PATH indicates the current directory. A null directory name may appear as two adjacent colons,  or as an initial or trailing colon. The default path is system-dependent, and is set by the administrator  who installs bash.
+		PWD: (echo &PWD) The current working directory as set by the cd command.
+
+
+
+Sessió 2:
+	
+	make: Utilidad para automatizar el proceso de compilación/linkaje de un programa o grupo de programas
+	
+	gcc: compilador de C en GNU
+
+		-c: Compile or assemble the source files, but do not link.  The linking stage simply is not done. The ultimate output is in the form of an object file for each source file. By default, the object file name for a source file is made by replacing the suffix .c, .i, .s, etc., with .o. Unrecognized input files, not requiring compilation or assembly, are ignored.
+		-o: (-o file) Place output in file file.  This applies to whatever sort of output is being produced, whether it be an executable file, an object file, an assembler file or preprocessed C code. If -o is not specified, the default is to put an executable file in a.out, the object file for source.suffix in source.o, its assembler file in source.s, a precompiled header file in source.suffix.gch, and all preprocessed C source on standard output.
+		-I: includes
+		-L, -l: libraries
+
+	//No comandos:
+	print: conversión de formato almacenándola en un búffer
+		printf,   fprintf,   dprintf,  sprintf,  snprintf,  vprintf,  vfprintf,
+       	vdprintf, vsprintf, vsnprintf - formatted output conversion
+		#include <stdio.h>
+	    int printf(const char *format, ...); int fprintf(FILE *stream, const char *format, ...); int dprintf(int fd, const char *format, ...); int sprintf(char *str, const char *format, ...); int snprintf(char *str, size_t size, const char *format, ...);
+	atoi: convierte un string a numero entero
+	indent: indentación de ficheros fuente
