@@ -262,3 +262,112 @@ Sessió 3: processos
 		      (41) policy  %u Scheduling  policy
 		      ...
 -------------------------------------------------------------------------------------------------------------------------------
+
+
+Sessió 4: Signals
+
+The child does not inherit timers from its parent
+	Acciones que pueden realizar los signals:
+		- Ignorar evento (no todos son ignorables)
+		- Realizar acciñón por defecto
+		- Ejecutar una función que el proceso haya definido (sigaction)
+	Funciones de tratamiento de signal: 
+	void nombre_funcion(int numero_de_signal_recibido);
+
+	Quan es rep un signal, el sistema passa a executar el tractament.
+	Si el tractament és una funció, aquesta rep num del signal com a parametre. -> una funció pot tractar diferents signals.	
+
+
+	sigaction:	Reprograma la acción asociada a un evento concreto.
+			#include <signal.h>
+			int sigaction(int signum, const struct sigaction *act, struct sigaction *oldact);
+				signum: specifies the signal and can be any valid signal (sigkill i sigstop no)
+				act: If act is non-NULL, the new action for signal signum is installed from act.
+				oldact: If oldact is non-NULL, the  previous action is saved in oldact.
+			sigaction() system call: change the action taken by a process on receipt of a specific signal. 
+			struct sigaction {
+			       void (*sa_handler)(int);
+			       void (*sa_sigaction)(int, siginfo_t *, void *);
+			       sigset_t sa_mask;
+			       int sa_flags;
+			       void (*sa_restorer)(void);
+           		};
+
+	kill:		Envía un evento a un proceso (kill - send a signal to a process)
+	(comando)		<pid> [...]: Send signal to every <pid> listed.
+				-<signal>
+			The  default  signal  for  kill is TERM.
+
+	sigsuspend:	Bloquea el proceso que la ejecuta hasta que recibe un signal (no ignorado).
+			#include <signal.h>
+			int sigsuspend(const sigset_t *mask);
+			Description: 
+				sigsuspend()  temporarily replaces the signal mask of the
+			       	calling process with the mask given by mask (variable) 
+				and then suspends the process until delivery of a signal 
+				whosIf pid is positive,  then  signal  sig  is  sent  to  the
+       process with the ID specified by pid.
+
+       If pid equals 0, then sig is sent to every process in the
+       process group of the calling process.
+
+       If pid equals -1, then sig is sent to every  process  for
+       which the calling process has permission to send signals,
+       except for process 1 (init), but see below.
+
+       If pid is less than -1, then sig is sent to every process
+       in the process group whose ID is -pid.
+e action is to invoke a signal handler or to terminate a process.
+
+			       	- signal terminates: 	not return
+				- signal is caught:	returns after the signal handler returns
+							signal mask restored to the state before the call
+
+			       	(NOT: SIGKILL or SIGSTOP)
+			Return value: sigsuspend() always returns -1 (with errno)
+
+	sigprocmask:	Permite modificar la máscara de signals bloqueados del proceso
+			#include <signal.h>
+			int sigprocmask(int how, const sigset_t *set, sigset_t *oldset);
+			(how)SIG_BLOCK: 
+				The set of blocked signals is the union of the current set and the set argument.
+			(how)SIG_UNBLOCK: 
+				The signals in set are removed from the current set of blocked signals.
+				It is permissible to attempt to unblock a signal which is not blocked.
+       			(how)SIG_SETMASK: 
+				The set of blocked signals is set to the argument set.
+
+			mask = vector amb processos marcats.
+			normalment fem: int sigprocmask(SIG_BLOCK, mask, NULL);
+
+	alarm:		programa el envío de un signal SIGALRM al cabo de n segundos.
+			#include <unistd.h>
+			unsigned int alarm(unsigned int seconds);
+			If seconds is zero, any pending alarm is canceled.
+			In any event any previously set alarm() is canceled.
+			RETURN VALUE: 	number of seconds remaining until any previously  scheduled  alarm
+					or 0 if there was no previously scheduled alarm.
+
+	sleep: 		función de C que bloquea proceso durante el tiempo que pasa por su parámetro.
+			sleep NUMBER[SUFFIX]...
+				suffix: s (seconds), m (minutes), h (hours), d (days)
+
+	kill:		Envía un evento concreto a un proceso 
+	(syscall codi)  #include <sys/types.h>
+       			#include <signal.h>
+			int kill(pid_t pid, int sig);
+				pid > 0: sig sent to process with pid
+				pid == 0: sig sent to every process in the process group of the calling process.
+				pid == -1: sig sent to every process 
+       which the calling process has permission to send signals,
+       except for process 1 (init), but see below.
+
+       If pid is less than -1, then sig is sent to every process
+       in the process group whose ID is -pid.
+
+
+
+
+				
+			
+			
