@@ -360,39 +360,37 @@ else ...
 		sigchld (fi de un procés fill)
 		sigusr1 / sigusr2 (sense significat previ)
 		
-		
--------------------------------------------------------------------------------------------------------------------------------
+
+
+----------
+
 
 Sessió 5: Memòria
+-----------------
 
-	gcc: compilador de c
-		-static: On systems that support dynamic linking, this overrides -pie and prevents linking with the shared libraries. On other systems, this option has no effect.
+**gcc:** compilador de c
+>**-static:** On systems that support dynamic linking, this overrides -pie and prevents linking with the shared libraries. On other systems, this option has no effect.
 
-	nm: comando que muestra la tabla de símbolos del programa (variables globales y funciones)
-		nm + ejecutable,
+**nm:** comando que muestra la tabla de símbolos del programa (variables globales y funciones)
+> `nm + ejecutable`
 
-	objdump: objdump [options] <input object files>
-		 comando que muestra información sobre el fichero objeto (.o)
-		 -d: Display the assembler mnemonics for the machine instructions from objfile. 
-		     This option only disassembles those sections which are expected to contain instructions.
+**objdump:** `objdump [options] <input object files>`
+> comando que muestra información sobre el fichero objeto (.o)
+> **-d:** Display the assembler mnemonics for the machine instructions from objfile. This option only disassembles those sections which are expected to contain instructions.
 
-	/proc/[pid]/maps: 	
-		A file containing the currently mapped memory regions and their access permissions.
+**`/proc/[pid]/maps: `** A file containing the currently mapped memory regions and their access permissions.
 
-	malloc: función de C que valida una región de memoria lógica (reserva)
-			(void *)malloc(size_t size); <- sizeof(type)
-			#include <stdlib.h>
-			RETURN VALUES	successful: return pointer to allocated memory
-							error: NULL to pointer and set errno.
+**malloc:** función de C que valida una región de memoria lógica (reserva)
+> `(void *)malloc(size_t size);`<- sizeof(type)
+> `#include <stdlib.h>`
+> RETURN VALUES: successful: return pointer to allocated memory, error: NULL to pointer and set errno.
 
-	free:	función de C que libera una región de memoria lógica
-			void free(void *ptr); <- punter que retorna el malloc
-			#include <stdlib.h>
-			RETURN VALUESThe free() function does not return a value.
+**free:**	función de C que libera una región de memoria lógica
+> `void free(void *ptr);` <- punter que retorna el malloc
+> `#include <stdlib.h>`
+> RETURN VALUES: The free(...) function does not return a value.
 
-	sbrk:	llamada al sistema que modifica el tamaño de la sección de 
-			void *sbrk(int incr); <- sizeof(type)
-			#include <unistd.h>
-			RETURN VALUES: 	successful: pointer to the base of the new storage
-					error: -1 with errno set to indicate why the allocation failed.
-
+**sbrk:** llamada al sistema que modifica el tamaño de la sección de datos.
+> `void *sbrk(int incr);` <- sizeof(type)
+> `#include <unistd.h>`
+> RETURN VALUES: successful: pointer to the base of the new storage, error: -1 with errno set to indicate why the allocation failed.
