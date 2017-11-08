@@ -1,0 +1,534 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SO</title>
+<link rel="stylesheet" href="https://stackedit.io/res-min/themes/base.css" />
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body><div class="container"><h1 id="comandos">COMANDOS</h1>
+
+<hr>
+
+
+
+<h2 id="sessió-1">Sessió 1:</h2>
+
+<p><strong>man:</strong> accedeix a manuals on-line </p>
+
+<p><strong>ls:</strong> mostra contingut del directori</p>
+
+<blockquote>
+  <ul>
+  <li><strong>-l:</strong> List in long format.</li>
+  <li><strong>-a:</strong> Include directory entries whose names begin with a dot (.). -&gt; mostra arxius ocults</li>
+  </ul>
+</blockquote>
+
+<p><strong>alias:</strong> define un nombre alternativo a un comando.</p>
+
+<blockquote>
+  <ul>
+  <li>#alias ls=’ls -la’ (-l i -a junts) </li>
+  </ul>
+</blockquote>
+
+<p><strong>mkdir:</strong> crea directorio </p>
+
+<p><strong>rmdir:</strong> elimina directorio vacío</p>
+
+<p><strong>mv:</strong> canvia nom del fitxer o el mou a un altre directori</p>
+
+<blockquote>
+  <ul>
+  <li><strong>-i:</strong> Cause mv to write a prompt to standard error before moving a file that would overwrite an existing file.  If the response from the standard input begins with the character ‘y’ or ‘Y’, the move is attempted.  (The -i option over-rides any previous -f or -n options.)</li>
+  </ul>
+</blockquote>
+
+<p><strong>cp:</strong> copia fitxers i directoris</p>
+
+<blockquote>
+  <ul>
+  <li><strong>-i:</strong> Cause cp to write a prompt to the standard error output before copying a file that would overwrite an existing file.  If the response from the standard input begins with the character ‘y’ or ‘Y’, the file  copy is attempted. (The -i option overrides any previous -n option.)</li>
+  </ul>
+</blockquote>
+
+<p><strong>rm:</strong> borra fitxers o directoris</p>
+
+<blockquote>
+  <ul>
+  <li><strong>-i:</strong> Request confirmation before attempting to remove each file, regardless of the file’s permissions, or  whether or not the standard input device is aterminal. The -i option overrides any previous -f options.</li>
+  </ul>
+</blockquote>
+
+<p><strong>echo:</strong> visualitza un text (pot ser una variable d’entorn)</p>
+
+<p><strong>less:</strong> mostra fitxer en un temany apte per terminal</p>
+
+<p><strong>cat:</strong> concatena ficheros y los muestra en su salida estándar</p>
+
+<p><strong>grep:</strong> busca text (o patrons de text) en fitxers</p>
+
+<blockquote>
+  <ul>
+  <li>#grep hola test test1 test2 test3 test4</li>
+  </ul>
+</blockquote>
+
+<p><strong>gedit:</strong> editor (sublime mola més)</p>
+
+<p><strong>env:</strong> ejecuta un comando en un entorno modificado, si no se le pasa comando, muestra el entorno</p>
+
+<p><strong>chmod: </strong> modifica els permisos d’accés a un fitxer</p>
+
+<p><strong>which:</strong> localitza un comando</p>
+
+<p><strong>help:</strong> ofrece información sobre comandos internos de la Shell</p>
+
+<blockquote>
+  <ul>
+  <li>usar con: help, export, cd, alias</li>
+  <li>export NOMBRE_VARIABLE=valor (sin espacios).</li>
+  </ul>
+</blockquote>
+
+<p><strong>en man bash: </strong></p>
+
+<blockquote>
+  <p>(nota: el carácter “/” sirve para buscar patrones en las páginas del man. Utilízalo para encontrar directamente la descripción de estas variables)</p>
+  
+  <blockquote>
+    <p><strong>HOME:</strong> (<code>echo &amp;HOME</code>) The home directory of the current user; the default argument for the cd builtin command. The value of this variable is also used when performing tilde expansion. <br>
+    <strong>PATH:</strong> (<code>echo &amp;PATH</code>) The search path for commands. It is a colon-separated list of directories in which the shell looks for commands. A zero-length (null) directory name in the value of PATH indicates the current directory. A null directory name may appear as two adjacent colons,  or as an initial or trailing colon. The default path is system-dependent, and is set by the administrator  who installs bash. <br>
+    <strong>PWD:</strong> (<code>echo &amp;PWD</code>) The current working directory as set by the cd command.</p>
+  </blockquote>
+</blockquote>
+
+<hr>
+
+
+
+<h2 id="sessió-2">Sessió 2:</h2>
+
+<p><strong>make:</strong> Utilidad para automatizar el proceso de compilación/linkaje de un programa o grupo de programas</p>
+
+<p><strong>gcc:</strong> compilador de C en GNU</p>
+
+<blockquote>
+  <ul>
+  <li><strong>-c:</strong> Compile or assemble the source files, but do not link.  The linking stage simply is not done. The ultimate output is in the form of an object file for each source file. By default, the object file name for a source file is made by replacing the suffix .c, .i, .s, etc., with .o. Unrecognized input files, not requiring compilation or assembly, are ignored.</li>
+  <li><strong>-o:</strong> (<code>-o file</code>) Place output in file file.  This applies to whatever sort of output is being produced, whether it be an executable file, an object file, an assembler file or preprocessed C code. If -o is not specified, the default is to put an executable file in a.out, the object file for source.suffix in source.o, its assembler file in source.s, a precompiled header file in source.suffix.gch, and all preprocessed C source on standard output.</li>
+  <li><strong>-I:</strong> includes</li>
+  <li><strong>-L, -l:</strong> libraries</li>
+  </ul>
+</blockquote>
+
+<p><strong>print:</strong> conversión de formato almacenándola en un búffer</p>
+
+<blockquote>
+  <ul>
+  <li>printf,   fprintf,   dprintf,  sprintf,  snprintf,  vprintf,  vfprintf, vdprintf, vsprintf, vsnprintf - formatted output conversion</li>
+  </ul>
+</blockquote>
+
+<p><code>#include &lt;stdio.h&gt;</code> <br>
+<code>int printf(const char *format, ...);  <br>
+int fprintf(FILE *stream, const char *format, ...);  <br>
+int dprintf(int fd, const char *format, ...);  <br>
+int sprintf(char *str, const char *format, ...);  <br>
+int snprintf(char *str, size_t size, const char *format, ...);</code></p>
+
+<p><strong>atoi:</strong> convierte un string a numero entero <br>
+<strong>indent:</strong> indentación de ficheros fuente</p>
+
+<hr>
+
+
+
+<h2 id="sessió-3-processos">Sessió 3: processos</h2>
+
+<pre class="prettyprint"><code class="language-c hljs "><span class="hljs-keyword">int</span> main (<span class="hljs-keyword">int</span> argc,<span class="hljs-keyword">char</span> *argv[]) 
+{
+    ... 
+    <span class="hljs-keyword">if</span> ((pid=fork())&lt;<span class="hljs-number">0</span>)  error_y_exit(“Error en fork”,<span class="hljs-number">1</span>);  
+    ... 
+}
+<span class="hljs-keyword">void</span> error_y_exit(<span class="hljs-keyword">char</span> *msg,<span class="hljs-keyword">int</span> exit_status) 
+{ 
+    perror(msg);    
+    <span class="hljs-built_in">exit</span>(exit_status); 
+} </code></pre>
+
+<blockquote>
+  <p>Además, en caso de que el error sea crítico, como por ejemplo que falle un fork o un execlp, tiene que terminar la ejecución del programa.</p>
+</blockquote>
+
+<p><strong>getpid:</strong>  <code>pid_t getpid(void); pid_t getppid(void);</code></p>
+
+<blockquote>
+  <p></p><ul> <br>
+  <li>retorna pid del procés que executa</li>
+  <li>llibreries: <code>#include &lt;sys/types.h&gt;, #include &lt;unistd.h&gt;</code></li>
+  <li>RETURN VALUE:  (mai error) <br></li></ul><p></p>
+  
+  <blockquote>
+    <p>getpid() -&gt; returns  the process ID of the calling process. <br>
+    getppid() -&gt; returns  the  process  ID of the parent of the calling process.
+    </p>
+  </blockquote>
+</blockquote>
+
+<p><strong>fork:</strong>   <code>pid_t fork(void);</code></p>
+
+<blockquote>
+  <p>crea un proceso nuevo, hijo del que ejecuta el fork <br>
+  llibreries: <code>#include &lt;unistd.h&gt;</code> <br>
+  The child’s parent process ID is the same as the parent’s process ID. <br>
+  The child does not inherit timers from its parent (alarm(2)…). <br>
+  The termination signal of the child is always SIGCHLD. <br>
+  RETURN VALUE:  <br>
+  - Success: the PID of the child process is returned in the parent and 0 is returned in the child.  <br>
+  - Failure: -1 is returned in the parent no child process is created and errno is set appropriately.</p>
+</blockquote>
+
+<p><strong>exit:</strong>   <code>void exit(int status);</code></p>
+
+<blockquote>
+  <p>acaba el procés que executa la crida <br>
+   llibreries: <code>#include &lt;stdlib.h&gt;</code> <br>
+   exit() causes normal process termination and the value of status is returned to the parent <br>
+   RETURN VALUE: The exit() function does not return.</p>
+</blockquote>
+
+<p><strong>execlp:</strong> extern char **environ;</p>
+
+<blockquote>
+  <p><code>int execl(const char *path, const char *arg, .../* (char  *) NULL */); <br>
+  int execlp(const char *file, const char *arg, .../* (char  *) NULL */); <br>
+  int execle(const char *path, const char *arg, .../*, (char *) NULL, char * const envp[]*/); <br>
+  int execv(const char *path, char *const argv[]); <br>
+  int execvp(const char *file, char *const argv[]); <br>
+  int execvpe(const char *file, char *const argv[], char *const envp[]);</code></p>
+  
+  <p>En <strong>path</strong> debemos pasar la ruta del ejecutable <br>
+  <strong>file:</strong> Busca el archivo ejecutable en todos los directorios especificados por PATH.  <br>
+  <strong>RETURN VALUE:</strong> Esta función retorna -1 en caso de error, en caso contrario no retorna.  <br>
+  No retorna ya que hemos sustituido el contexto del programa por el de otro. </p>
+  
+  <p>Debemos pasar los argumentos para el nuevo programa a ejecutarse en *arg.  <br>
+  Se heredan los descriptores de ficheros abiertos <br>
+  Todas las señales pasaran a la acción por defecto. <br>
+  Ejecuta un programa en el contexto del mismo proceso. <br>
+   Llibreries: <code>#include &lt;unistd.h&gt;</code> <br>
+   The exec() family of functions replaces the current process image with a new process image. <br>
+  RETURN VALUE:   The exec() functions return only if an error has occurred. <br>
+  The return value is -1, and errno is set to indicate the error.</p>
+</blockquote>
+
+<p><strong>perror:</strong> <code>void perror(const char *s);</code></p>
+
+<blockquote>
+  <p>escribe un mensaje del último error <br>
+   <code>llibreries: #include &lt;errno.h&gt;</code></p>
+</blockquote>
+
+<p><strong>ps:   </strong> (comando)</p>
+
+<blockquote>
+  <p>devuelve la información de los procesos <br>
+  <strong>-a:</strong> Select all processes associated with a terminal. <br>
+  <strong>-u:</strong> (userlist) Select by effective user ID or name. This selects the processes whose effective user name or ID is in userlist. <br>
+  <strong>-o:</strong> (format) User-defined format. format is a single argument in the form of a blank-separated or comma-separated list, which offers a way to specify individual output columns. </p>
+</blockquote>
+
+<p><strong>proc:</strong>   (directoy) proc - process information pseudo-filesystem</p>
+
+<blockquote>
+  <p><code>/proc/[pid]/cmdline</code>: <br>
+  This read-only file  holds  the  complete  command line for the process, unless the process is a zombie.  In the latter case, there is nothing in thisfile:  that  is, a read on this file will return 0 characters.  The command-line arguments appear  in this  file  as  a set of strings separated by null bytes (‘\0’), with a further null byte  after  the last string.</p>
+  
+  <p><code>/proc/[pid]/cwd</code> <br>
+  This is a symbolic link  to  the  current  working directory of the process.  To find out the current working directory of process 20, for instance, you can do this: <code>$ cd /proc/20/cwd; /bin/pwd</code></p>
+  
+  <p><code>/proc/[pid]/environ</code> <br>
+   This  file  contains  the  environment   for   the  process.   The entries are separated by null bytes (‘\0’), and there may be a null byte at  the  end. Thus,  to  print out the environment of process 1, you would do: <code>$ strings /proc/1/environ</code></p>
+  
+  <p><code>/proc/[pid]/exe</code> Under Linux 2.2 and later, this file is a symbolic link  containing  the  actual pathname of the executed command.</p>
+  
+  <p><code>/proc/[pid]/stat</code> <br>
+   Status information about  the  process. <br>
+   (1) pid %d The process ID. <br>
+   (2) comm %s The filename of the executable, parentheses. <br>
+   (3) state %c: <br>
+                              R  Running <br>
+                              S  Sleeping in an interruptible wait <br>
+                              D  Waiting in uninterruptible disk sleep <br>
+                              Z  Zombie <br>
+                              T  Stopped (on a signal) or trace stopped <br>
+                              t  Tracing stop <br>
+                              W  Paging <br>
+                              X, x  Dead <br>
+                              K  Wakekill  <br>
+                              W  Waking <br>
+                              P  Parked <br>
+                (4) ppid %d The PID of the parent of this process. <br>
+                (5) pgrp %d The process group ID of the process. <br>
+                (6) session %d The session ID of the process. <br>
+                (7) tty_nr %d The controlling terminal of the process. <br>
+                (8) tpgid %d The ID of the foreground process group of process’ controlling terminal. <br>
+                (9) flags %u The  kernel  flags  word of the process. <br>
+                (10) minflt  %lu … <br>
+                (11) cminflt  %lu … <br>
+                (12) majflt  %lu … <br>
+                (13) cmajflt  %lu … <br>
+                (14) utime  %lu:  Amount of time  that  this  process  has <br>
+                              been scheduled in user mode, measured in <br>
+                              clock ticks. <br>
+                (15) stime  %lu:  Amount of time  that  this  process  has <br>
+                                  been scheduled in kernel mode, measured <br>
+                                  in clock ticks. <br>
+                (16) cutime  %ld: Amount   of  time  that  this  process’s <br>
+                              waited-for children have been  scheduled <br>
+                              in  user  mode,  measured in clock ticks <br>
+                (17) cstime  %ld: Amount   of  time  that  this  process’s <br>
+                              waited-for children have been  scheduled <br>
+                              in  kernel mode, measured in clock ticks. <br>
+                (18) priority  %ld <br>
+                (19) nice  %ld The nice value <br>
+                (20) num_threads  %ld Number of threads in this process <br>
+                (21) itrealvalue  %ld <br>
+                          The  time  in  jiffies  before  the next <br>
+                          SIGALRM is sent to the process due to an <br>
+                          interval  timer.  <br>
+                (22) starttime  %llu <br>
+                          The  time the process started after sys‐ <br>
+                          tem boot. <br>
+                (23) vsize  %lu  Virtual memory size in bytes. <br>
+                (24) rss  %ld  Resident  Set  Size: number of pages the process has in  real  memory. <br>
+                (25) rsslim  %lu Current  soft  limit in bytes on the rss of the process <br>
+                (26) startcode  %lu The address above which program text can run. <br>
+                (27) endcode  %lu The address below which program text can run. <br>
+                (28) startstack  %lu The  address of the start of the stack. <br>
+                (29) kstkesp  %lu The  current value of ESP (stack pointer) <br>
+                (30) kstkeip  %lu The current EIP (instruction pointer). <br>
+                (31) signal  %lu The bitmap of pending signals, displayed as  a decimal number. <br>
+                (32) blocked  %lu The bitmap of blocked signals, displayed as  a decimal number.  <br>
+                (33) sigignore  %lu The bitmap of ignored signals, displayed as  a decimal number <br>
+                (34) sigcatch  %lu The bitmap of caught signals,  displayed as  a decimal number. <br>
+                (35) wchan  %lu  This  is  the  “channel”  in  which  the process  is  waiting. <br>
+               …</p>
+</blockquote>
+
+<hr>
+
+
+
+<h2 id="sessió-4-signals">Sessió 4: Signals</h2>
+
+<blockquote>
+  <p>The child does not inherit timers from its parent <br>
+  Acciones que pueden realizar los signals: <br>
+          - Ignorar evento (no todos son ignorables) <br>
+          - Realizar acciñón por defecto <br>
+          - Ejecutar una función que el proceso haya definido (sigaction) <br>
+  Funciones de tratamiento de signal:  <br>
+      <code>void nombre_funcion(int numero_de_signal_recibido);</code></p>
+  
+  <p>Quan es rep un signal, el sistema passa a executar el tractament. Si el tractament és una funció, aquesta rep num del signal com a parametre. -&gt; una funció pot tractar diferents signals.    </p>
+</blockquote>
+
+<p><strong>sigaction:</strong>  Reprograma la acción asociada a un evento concreto.</p>
+
+<blockquote>
+  <p><code>#include &lt;signal.h&gt;;</code> <br>
+  <code>int sigaction(int signum, const struct sigaction *act, struct sigaction *oldact);</code> <br>
+  <strong>signum:</strong> specifies the signal and can be any valid signal (sigkill i sigstop no) <br>
+  <strong>act:</strong> If act is non-NULL, the new action for signal signum is installed from act. <br>
+  <strong>oldact:</strong> If oldact is non-NULL, the  previous action is saved in oldact. <br>
+  sigaction() system call: change the action taken by a process on receipt of a specific signal. </p>
+</blockquote>
+
+
+
+<pre class="prettyprint"><code class="language-c hljs "><span class="hljs-keyword">struct</span> sigaction {
+    <span class="hljs-keyword">void</span> (*sa_handler)(<span class="hljs-keyword">int</span>);
+    <span class="hljs-keyword">void</span> (*sa_sigaction)(<span class="hljs-keyword">int</span>, siginfo_t *, <span class="hljs-keyword">void</span> *);
+    sigset_t sa_mask;
+    <span class="hljs-keyword">int</span> sa_flags;
+    <span class="hljs-keyword">void</span> (*sa_restorer)(<span class="hljs-keyword">void</span>);
+};</code></pre>
+
+<blockquote>
+  <p>SA_RESETHAND: Restore the signal action to the default upon entry to the signal handler.  This flag is meaningful only when establishing a signal handler.</p>
+</blockquote>
+
+<p><strong>kill:</strong> Envía un evento a un proceso (kill - send a signal to a process)</p>
+
+<blockquote>
+  <p>kill -KILL  <br>
+  (comando) <br>
+  &lt; pid &gt; […]: Send signal to every  listed. <br>
+  -&lt; signal &gt; <br>
+  The  default  signal  for  kill is TERM.</p>
+</blockquote>
+
+<p><strong>sigsuspend:</strong> Bloquea el proceso que la ejecuta hasta que recibe un signal (no ignorado).</p>
+
+<blockquote>
+  <p><code>#include &lt;signal.h&gt;</code> <br>
+  <code>int sigsuspend(const sigset_t *mask);</code> <br>
+  Description:  sigsuspend()  temporarily replaces the signal mask of the calling process with the mask given by mask (variable) and then suspends the process until delivery of a signal  whosIf pid is positive,  then  signal  sig  is  sent  to  the process with the ID specified by pid.</p>
+  
+  <p>If pid equals 0, then sig is sent to every process in the  process group of the calling process. <br>
+  If pid equals -1, then sig is sent to every  process  for which the calling process has permission to send signals, except for process 1 (init), but see below. <br>
+  If pid is less than -1, then sig is sent to every process in the process group whose ID is -pid. <br>
+  e action is to invoke a signal handler or to terminate a process. <br>
+  - signal terminates:  not return <br>
+  - signal mask restored to the state before the call <br>
+  (NOT: SIGKILL or SIGSTOP) <br>
+  **Return value: **sigsuspend() always returns -1 (with errno)</p>
+</blockquote>
+
+<p><strong>sigprocmask:</strong> Permite modificar la máscara de signals bloqueados del proceso</p>
+
+<blockquote>
+  <p><code>#include &lt;signal.h&gt;</code> <br>
+  <code>int sigprocmask(int how, const sigset_t *set, sigset_t *oldset);</code> <br>
+  (how)SIG_BLOCK:  The set of blocked signals is the union of the current set and the set argument. <br>
+  (how)SIG_UNBLOCK:  The signals in set are removed from the current set of blocked signals. It is permissible to attempt to unblock a signal which is not blocked. <br>
+  (how)SIG_SETMASK: The set of blocked signals is set to the argument set.</p>
+  
+  <p>mask = vector amb processos marcats. <br>
+  normalment fem: <code>int sigprocmask(SIG_BLOCK, mask, NULL);</code></p>
+</blockquote>
+
+<p><strong>alarm:</strong> programa el envío de un signal SIGALRM al cabo de n segundos.</p>
+
+<blockquote>
+  <p><code>#include &lt;unistd.h&gt;</code> <br>
+  <code>unsigned int alarm(unsigned int seconds);</code> <br>
+  If seconds is zero, any pending alarm is canceled. <br>
+  In any event any previously set alarm() is canceled <br>
+  RETURN VALUE:     number of seconds remaining until any previously  scheduled  alarm or 0 if there was no previously scheduled alarm.</p>
+</blockquote>
+
+<p><strong>sleep:</strong> función de C que bloquea proceso durante el tiempo que pasa por su parámetro.</p>
+
+<blockquote>
+  <p><code>sleep NUMBER[SUFFIX]...</code> <br>
+  suffix: s (seconds), m (minutes), h (hours), d (days)</p>
+</blockquote>
+
+<p><strong>kill:</strong>   Envía un evento concreto a un proceso  <br>
+(syscall codi)  </p>
+
+<blockquote>
+  <p><code>#include &lt;sys/types.h&gt; #include &lt;signal.h&gt;</code> <br>
+  <code>int kill(pid_t pid, int sig);</code> <br>
+  - pid &gt; 0: sig sent to process with pid <br>
+  - pid == 0: sig sent to every process in the process group of the calling process <br>
+  - pid == -1: sig sent to every process which the calling process has permission to send signals <br>
+  - pid &lt; -1: sig sent to every process in the process group whose ID is -pid. <br>
+  - sig == 0: no signal sent (error checking stil performed) <br>
+  RETURN VALUE:     sucess -&gt; 0, error -&gt; errno (no signal sent)</p>
+</blockquote>
+
+<p><strong>ps:</strong> mostra informació sobre els processos del sistema</p>
+
+<blockquote>
+  <p><strong>-o</strong> pid: format <br>
+  <strong>s:</strong> Display signal format <br>
+  Here are the different keywords that may be used to control the output format (e.g. with option -o) or to sort the selected processes with the GNU-style –sort option. For example: ps -eo pid,user,args –sort user This version of ps tries to recognize most of the keywords used in other implementations of ps. The following user-defined format specifiers may contain spaces: args, cmd, comm, command, fname, ucmd, ucomm, lstart, bsdstart, start. <br>
+  <strong>cmd:</strong> command with all its arguments as a string. Modifications to the arguments may be shown.  The output in this column may contain spaces.  A process marked &lt; defunct &gt; is partly dead, waiting to be   fully destroyed by its parent.  Sometimes the process args will be unavailable; when this happens,  ps will instead print the executable name in brackets.  (alias cmd, command). <br>
+  <strong>time:</strong> cumulative CPU time, “[DD-]HH:MM:SS” format.  (alias cputime).</p>
+</blockquote>
+
+<p><strong>waitpid:</strong> espera finalització d’un procés</p>
+
+<blockquote>
+  <p><code>#include &lt;sys/types.h&gt;, #include &lt;sys/wait.h&gt;`` <br>
+  </code>pid_t wait(int *status); pid_t waitpid(pid_t pid, int *status, int options);` <br>
+  wait(&amp;status) = waitpid(-1, &amp;status, 0) &lt;- equivalents</p>
+</blockquote>
+
+
+
+<pre class="prettyprint"><code class="language-c hljs "><span class="hljs-built_in">exit</span>(<span class="hljs-number">0</span>) <span class="hljs-comment">//fin hijo</span>
+<span class="hljs-keyword">int</span> status;
+waitpid(&amp;status); <span class="hljs-comment">//padre espera y status = x (exit(x)) </span>
+<span class="hljs-keyword">if</span> (status == <span class="hljs-number">0</span>)...
+<span class="hljs-keyword">else</span> ...</code></pre>
+
+<blockquote>
+  <p>The value of pid can be -&gt; wait for… <br>
+  - pid &lt;  -1  any child process (group == id) <br>
+  - pid == -1  any child process <br>
+  - pid ==  0  any child process (group ID == that of the calling process) <br>
+  - pid &gt;   0  process with that pid <br>
+  RETURN VALUE <br>
+  wait():   success -&gt; PID terminated child , error -&gt; -1 <br>
+  waitpid():    success -&gt; returns the PID of the child whose state has changed;  if WNOHANG was specified and one or more child(ren) specified by pid exist, but have not yet changed state, then 0 is returned. (WNOHANG: return immediately if no child has exited), error -&gt; -1 <br>
+  Each of these calls sets errno to an appropriate value in the case of an error.</p>
+</blockquote>
+
+<p><strong>SIGNALS: </strong></p>
+
+<blockquote>
+  <p><code>#include &lt;signal.h&gt;</code> <br>
+  <code>sigalrm (alarma, temporizador)</code> <br>
+  <code>sigchld (fi de un procés fill)</code> <br>
+  <code>sigusr1 / sigusr2 (sense significat previ)</code></p>
+</blockquote>
+
+<hr>
+
+
+
+<h2 id="sessió-5-memòria">Sessió 5: Memòria</h2>
+
+<p><strong>gcc:</strong> compilador de c</p>
+
+<blockquote>
+  <p><strong>-static:</strong> On systems that support dynamic linking, this overrides -pie and prevents linking with the shared libraries. On other systems, this option has no effect.</p>
+</blockquote>
+
+<p><strong>nm:</strong> comando que muestra la tabla de símbolos del programa (variables globales y funciones)</p>
+
+<blockquote>
+  <p><code>nm + ejecutable</code></p>
+</blockquote>
+
+<p><strong>objdump:</strong> <code>objdump [options] &lt;input object files&gt;</code></p>
+
+<blockquote>
+  <p>comando que muestra información sobre el fichero objeto (.o) <br>
+  <strong>-d:</strong> Display the assembler mnemonics for the machine instructions from objfile. This option only disassembles those sections which are expected to contain instructions.</p>
+</blockquote>
+
+<p><strong><code>/proc/[pid]/maps:</code></strong> A file containing the currently mapped memory regions and their access permissions.</p>
+
+<p><strong>malloc:</strong> función de C que valida una región de memoria lógica (reserva)</p>
+
+<blockquote>
+  <p><code>(void *)malloc(size_t size);</code>&lt;- sizeof(type) <br>
+  <code>#include &lt;stdlib.h&gt;</code> <br>
+  RETURN VALUES: successful: return pointer to allocated memory, error: NULL to pointer and set errno.</p>
+</blockquote>
+
+<p><strong>free:</strong>   función de C que libera una región de memoria lógica</p>
+
+<blockquote>
+  <p><code>void free(void *ptr);</code> &lt;- punter que retorna el malloc <br>
+  <code>#include &lt;stdlib.h&gt;</code> <br>
+  RETURN VALUES: The free(…) function does not return a value.</p>
+</blockquote>
+
+<p><strong>sbrk:</strong> llamada al sistema que modifica el tamaño de la sección de datos.</p>
+
+<blockquote>
+  <p><code>void *sbrk(int incr);</code> &lt;- sizeof(type) <br>
+  <code>#include &lt;unistd.h&gt;</code> <br>
+  RETURN VALUES: successful: pointer to the base of the new storage, error: -1 with errno set to indicate why the allocation failed.</p>
+</blockquote></div></body>
+</html>
