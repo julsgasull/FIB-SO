@@ -1,4 +1,4 @@
-all: es1 es1_v2 es2 es3 es4 es5 es6 es7 es8
+all: es1 es1_v2 es2 es3 es4 es5 es6 es6_v2 es7 es8
 
 es1: es1.c
 	gcc -o es1 es1.c
@@ -20,6 +20,9 @@ es5: es5.c
 
 es6: es6.c
 	gcc -o es6 es6.c
+
+es6_v2: es6_v2.c
+	gcc -o es6_v2 es6_v2.c
 
 es7: es7.c
 	gcc -o es7 es7.c

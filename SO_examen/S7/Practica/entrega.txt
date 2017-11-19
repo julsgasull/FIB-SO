@@ -1,5 +1,4 @@
 PREGUNTA 53
-
 	(1) ps
 	(2) ./es1 > /dev/pts/17
 	(3) ./es1 | ./es1
@@ -7,7 +6,6 @@ PREGUNTA 53
 	(5) strace -o salida_v2 -e read ./es1_v2 < es2.c
 		strace -o salida_v1 -e read ./es1 < es2.c
 	#
-
 	Diferencias: 
 		V1:
 			read(3, "\177ELF\2\1\1\3\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0P\t\2\0\0\0\0\0"..., 832) = 832
@@ -24,7 +22,6 @@ PREGUNTA 53
 			read(0, "", 1)                          = 0
 			+++ exited with 0 +++
 		#
-
 		V2:
 			read(3, "\177ELF\2\1\1\3\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0P\t\2\0\0\0\0\0"..., 832) = 832
 			read(0, "#include <string.h>\n#include <st"..., 1024) = 1024
@@ -33,7 +30,6 @@ PREGUNTA 53
 			+++ exited with 0 +++
 		#
 	#
-
 	Llamadas al sistema read:
 		V1:
 			Tantes com chars a l'entrada + 1 (el primer).
@@ -42,7 +38,6 @@ PREGUNTA 53
 			4.
 		#
 	#
-
 	Rendiment:
 		V2 tindrà més bon rendiment que V1 ja que només fa 4 crides al sistema.
 		Com més crides al sistema, més es triga. (kernel ha de rebre-la i posar-se a executar-la).
@@ -51,7 +46,6 @@ PREGUNTA 53
 
 
 PREGUNTA 54
-
 	Amb '0':
 		A la terminal: 
 			./es2 0 3 > sortida_es2_0
@@ -65,7 +59,6 @@ PREGUNTA 54
 			2016303992
 		#
 	#
-
 	Amb '1':
 		A la terminal: 
 			./es2 1 3 > sortida_es2_1
@@ -79,30 +72,27 @@ PREGUNTA 54
 			sîR
 		#
 	#
-
 	La diferència entre posar 0 o 1, és que amb 0, llegeixes chars i escrius chars.
 	En canvi, amb 1, llegeixes ints i escrius chars. Per aquesta raó surten chars que no tenen sentit.
 #
 
 PREGUNTA 55
-
 	Comando:  ./es3 < sortida_es2_1
-	.............................................
-	Este programa asume que los datos de entrada son: entero(en formato int=4bytes)+'\n'. Total 5 bytes por numero
-	Una vez leido el numero lo convierte a ascii y lo saca por la salida std
-	Para poder usarlo debes generar un fichero con el programa es2 , opcion 1, y redireccionar la entrada con ese fichero
-	.............................................
-	1988013790	<-	Þ®~v
-	404261562	<-	ºŠ
-	1391329907	<-	sîR
-
+		.............................................
+		Este programa asume que los datos de entrada son: entero(en formato int=4bytes)+'\n'. Total 5 bytes por numero
+		Una vez leido el numero lo convierte a ascii y lo saca por la salida std
+		Para poder usarlo debes generar un fichero con el programa es2 , opcion 1, y redireccionar la entrada con ese fichero
+		.............................................
+		1988013790	<-	Þ®~v
+		404261562	<-	ºŠ
+		1391329907	<-	sîR
+	#
 	Els converteix.
 	En format 0, pren per ints l'entrada i els reconverteix a chars (ja eren chars -> no "vàlid")
 #
 
 
 PREGUNTA 56
-
 	./es4 < sortida_es2_0
 		.............................................
 		Este programa asume que la entrada std son numeros en ascii (de longitud variable por lo tanto), seguidos de un caracter '\n' 
@@ -113,7 +103,6 @@ PREGUNTA 56
 		81921963
 		2016303992
 	#
-
 	./es4 < sortida_es2_1
 		.............................................
 		Este programa asume que la entrada std son numeros en ascii (de longitud variable por lo tanto), seguidos de un caracter '\n' 
@@ -124,8 +113,93 @@ PREGUNTA 56
 		��
 		s�R
 	#
-
 	El programa es4 interpreta la entrada en ascii por lo tanto hace la "inversa" del es3.
-
 	La salida es diferente para cada programa porque interpreta de manera diferente los datos. Y la entrada es susceptible a como la interprete el programa ya que se pasa como un void*.
+#
+
+PREGUNTA 57.
+	./showCpuTime.sh ./es5 ./es1 ha mostrado por salida:
+		CMD                         %CPU     TIME
+		./es5                       99.6 00:01:04
+		./es1                        0.0 00:00:00
+		./es5                       99.6 00:01:06
+		./es1                        0.0 00:00:00
+		./es5                       99.7 00:01:08
+		./es1                        0.0 00:00:00
+		./es5                       99.7 00:01:10
+		./es1                        0.0 00:00:00
+		./es5                       99.7 00:01:12
+		./es1                        0.0 00:00:00
+		./es5                       99.7 00:01:14
+		./es1                        0.0 00:00:00
+	#
+	La diferencia es que el ./es1 ha gastado 0s de CPU y ./es5 ha usado un 99.7 de la CPU durante el tiempo de ejecución del programa.
+	Eso quiere decir que la llamada al sistema read ha hecho que es1 se bloquee y por lo tanto ha dejado de usar la cpu. En cambio, la espera activa del ./es5 ha estado funcionando casi todo el rato.
+	es1 para en el read.
+	es5 para en while(1);
+#
+
+PREGUNTA 58.
+	Return:
+		➜  Practica git:(master) ✗ ./es6_v2
+		[return]
+		[1]    72865 segmentation fault  ./es6_v2
+	#
+	^C:
+		➜  Practica git:(master) ✗ ./es6_v2
+		^Cread interrupido por signal
+	#
+#
+
+PREGUNTA 59.
+	Que seguiría intentando leer.
+		Return:
+			No escribe nada porque no ha leído nada.
+		#
+		^C:
+			Se para la llamada a sistema, se escribe "read interrupido por signal" y repite la llamada a sistema, por lo tanto seguiría intentando leer.
+		#
+	#
+#
+
+PREGUNTA 60.
+	Sí, 249 lo estaba usando bsg y 250 lo estaba usando watchdog.
+#
+
+PEGUNTA 61.
+	myDriver2              16384  0
+	myDriver1              16384  0
+#
+
+PREGUNTA 62.
+	sudo mknod myDevice c 230 0
+#
+
+PREGUNTA 63.
+	resultat de l'execució:
+		................................................
+		Este programa escribe por la salida std todo lo que lee de la entrada std. Si no has redirigido la salida, lo que escribas en el teclado saldra por la pantalla
+		Para acabar CtrlD
+		................................................
+		Driver 1 read operation
+		Sponsored by Laboratorios Gelocatas SL
+		fin ejecución
+	#
+	Si fas cat myDevice, imprimeix:
+		Driver 1 read operation
+		Sponsored by Laboratorios Gelocatas SL.
+	Que és el driver, les operacions que té i l'autor.
+#
+
+PREGUNTA 64.
+	A l'executar surt:
+		................................................
+		Este programa escribe por la salida std todo lo que lee de la entrada std. Si no has redirigido la salida, lo que escribas en el teclado saldra por la pantalla
+		Para acabar CtrlD
+		................................................
+		DRIVER 2 READ OPERATION
+		SPONSORED BY LABORATORIOS GELOCATAS SL
+		fin ejecución
+	#
+	Obviamente tienen diferente resultado ya que sus operaciones read son diferentes.
 #
