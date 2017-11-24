@@ -1,0 +1,48 @@
+1.
+
+- He usado los comandos:
+
+    mknod fifo1 p
+
+    cat > fifo1
+
+- y en la otra shell:
+
+    cat < fifo1
+
+Y lo que escribía en una, aparecía en la otra, ya que la pipe se ha creado correctamente..
+
+
+2.
+
+No, una pipe sin nombre solo puede ser creada a través de herencia. Por lo tanto, en dos terminales diferentes no es posible pero en un mismo termiinal sí lo es.
+
+
+3.
+
+#include <unistd.h>
+
+close(0);
+int fd = dup(4);
+
+// fd debería ser 0 ya que es el primero libre.
+
+
+4.
+
+Hecho.
+
+
+5.
+
+createSocket:
+    Crea un socket con la llamada a sistema socket con dominio UNIX (protocolos) y de tipo SOCK_STREAM que da una conexión secuencial, bidireccional y robusta basada en byte streams.
+
+    Luego usa la función bind para darle un nombre al socket y se le asigna un path (el que se pasa por parámetro) y una familia (en este caso, los protocolos de unix).
+
+    Seguidamente, con listen declaramos que queremos recibir conexiones entrantes en el socket pasándole un límite para la cola de conexiones pendientes.
+
+    Finalmente, si todo ha ido bien, se retorna el valor del file descriptor del socket.
+
+serverConnection:
+    Con accept acepta la conexion a un socket que ha sido creado con "socket", unido a una dirección con "bind" y que está "escuchando" posibles conexiones entrantes. Devuelve el fd del socket aceptado.

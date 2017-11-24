@@ -1,0 +1,36 @@
+Sesión 8: Gestión de Entrada/Salida
+
+
+PIPES SIN NOMBRE
+________________
+
+PREGUNTA 64. ¿Qué contiene el fichero al final de la ejecución?¿Cómo se explica ese contenido?
+
+	Contenido:
+		Inicio
+		Fin
+	#
+
+	Explicación:
+		El padre envia el mensaje "Inicio" al hijo, que ha mutado al programa cat, y escribe el mensaje por su salida estandar, que le ha entrado por la entrada estandar, en este caso, la salida de lectura del pipe. Después de enviar el mensaje, el padre cierra los canales del pipe y se pone a esperar al hijo, que una vez haya escrito el mensaje, acabara, indicando al padre que escriba "Fin" por la salida estandar.
+	#
+#
+
+PREGUNTA 65. ¿Acaba el programa padre? ¿y el hijo? ¿Por qué?.
+
+	El hijo termina, pero el padre no, ya que el hijo si que cierra sus canales, pero por como funcionan los pipes, como el padre no lo ha cerrado, no termina.
+#
+
+___________________________________________________
+
+
+
+PIPES CON NOMBRE
+________________
+
+PREGUNTA 66. Si quisiéramos que el lector también pudiera enviar un mensaje al escritor ¿podríamos utilizar la misma pipe con nombre o deberíamos crear otra? Razona la respuesta.
+
+	Deberiamos ser capaces abriendo el pipe en el lector y el escritor con el modo read y write.
+	(abriendo y cerrando canales cuando necesitemos)
+
+#
