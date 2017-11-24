@@ -124,3 +124,77 @@ strace -c [-eexpr] ... [-Ooverhead] [-Ssortby] [command [arg...]]
 >- -e:  expr    
 >  A  qualifying expression which modifies which events to trace or how to trace them.  The  format  of  the expression is: `[qualifier=][!]value1[,value2]...` where  qualifier  is  one of trace, abbrev, verbose, raw,  signal,  read,  or  write  and  value   is   a qualifier-dependent  symbol  or number.  The default qualifier  is  trace.   Using  an  exclamation  mark negates  the  set  of  values.  For example, -e open means literally -e trace=open which  in  turn  means trace  only  the  open  system  call.   By contrast, -e trace=!open means  to  trace  every  system  call except  open.  In  addition, the special values all and none have the obvious meanings.
 >- -c: Count  time,  calls, and errors for each system call nd report a summary on  program  exit.  On  Linux,  this  attempts  to  show system time (CPU time spent running in the kernel)  independent  of  wall  clock time.   If  -c  is  used with -f or -F (below), only aggregate totals for all traced processes are kept.
+
+Sessió 8:
+------------------------------------
+
+
+
+**mknod:** Comando que crea un fichero especial
+>  mknod - make block or character special files
+>  
+>- **p:** create a FIFO
+
+**mknod (llamada al  sistema):** Llamada  al  sistema  que  crea  un  fichero especial 
+> mknod, mknodat - create a special or ordinary file
+```c
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <unistd.h>
+int mknod(const char *pathname, mode_t mode, dev_t dev);
+```
+> The system call mknod() creates a filesystem node (file, device special file,  or named pipe) named pathname, with attributes specified by mode and dev.
+> The mode argument specifies both the file mode to use and the  type  of node  to  be created.  It should be a combination (using bitwise OR) of one of the file types listed below and zero or more of  the  file mode bits listed in stat(2).
+
+
+**pipe:** Llamada  a  sistema  para  crear  una  pipe  sin  nombre
+> pipe, pipe2 - create pipe
+```c
+#include <unistd.h>
+int pipe(int pipefd[2]);
+```
+>  pipe()  creates  a pipe, a unidirectional data channel that can be used for interprocess communication.  The array pipefd is used to return two file  descriptors  referring to the ends of the pipe.
+
+
+**open:** Abre un fichero o dispositivo
+>  open, openat, creat - open and possibly create a file
+```c
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+int open(const char *pathname, int flags);
+int open(const char *pathname, int flags, mode_t mode);
+```
+>- **O_NONBLOCK:**
+> When  possible, the file is opened in nonblocking mode. Neither the open() nor any subsequent operations on the file  descriptor which is returned will cause the calling process to wait.
+> Note  that  this  flag has no effect for regular files and block devices; that is,  I/O  operations  will  (briefly)  block  when device activity is required, regardless of whether O_NONBLOCK is set.  Since O_NONBLOCK  semantics  might  eventually  be  imple‐ mented,  applications  should  not depend upon blocking behavior when specifying this flag for regular files and block devices.
+> For the handling of FIFOs (named pipes), see also fifo(7).   For  a  discussion  of  the  effect of O_NONBLOCK in conjunction with  mandatory file locks and with file leases, see fcntl(2).
+
+>- **ENXIO:** 
+> O_NONBLOCK  |  O_WRONLY is set, the named file is a FIFO, and no process has the FIFO open for reading.  Or, the file is a device special file and no corresponding device exists.
+
+**close:** Cierra un descriptor de fichero
+> close - close a file descriptor
+```c
+#include <unistd.h>
+int close(int fd);
+```
+> RETURN VALUE: close()  returns  zero on success.  On error, -1 is returned, and errno is set appropriately.
+
+
+**dup/dup2:** Duplica un descriptor de fichero
+
+**socket:** Crea un socket
+>- AF_UNIX:
+>- SOCK_STREAM
+
+**bind:** Asigna un nombre o dirección a un socket
+
+**listen:** Espera 
+conexiones a un socket
+
+**accept:** Acepta una conexión en un socket
+
+**connect:** Inicia una conexión a un socket 
+
